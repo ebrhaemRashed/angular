@@ -1,0 +1,18 @@
+<div class="card" style="width: 15rem; height: 30rem">
+  <div class="logo"  [ngStyle]="{'background-image': 'url('+ product.image+')'}"></div>
+  <div class="card-body text-center">
+    <h5 class="card-title">{{product.category}}</h5>
+    <p class=" overflow-hidden" style="height: 3rem">
+      <a routerLink="/products/{{product.id}}">{{product.title}}</a>
+    </p>
+    <div [ngClass]="{'d-none': product.rating.count == 0}" class="d-flex justify-content-center" style="margin-top: -0.5rem">
+      <div [ngStyle]="{color: product.rating.rate > 2? 'green' : 'red'}">Rating: {{product.rating.count}}</div>
+    </div>
+    <div class="d-flex justify-content-center my-1"  style="font-size: 2rem">
+      <span style="font-size: 1rem">{{product.price | currency: 'EGY': 'code' | slice: 0:3}}</span>
+      <span class="mx-1">{{ product.price | number : '1.0-0' }}</span>
+      <span style="font-size: 1rem">{{product.price | fraction}}</span>
+    </div>
+    <button  class="btn btn-primary" (click)="addItemToCart()">Add to cart</button>
+  </div>
+</div>

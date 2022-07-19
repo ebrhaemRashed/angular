@@ -1,0 +1,52 @@
+<div class="w-75 mx-auto my-5">
+  <div class="card w-50 mx-auto mt-5">
+    <form [formGroup]="registerForm"  #ngRegisterForm="ngForm"  (ngSubmit)="registerNewUser()" class="p-4">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input  type="text" formControlName="name" class="form-control" id="name"   aria-describedby="nameHelp" name="name" required>
+        <div class="form-text text-danger" *ngIf="name?.invalid && name?.touched || ngRegisterForm.submitted && name?.invalid">
+          <div *ngIf="name?.errors?.['required']"> name is required</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input  type="text" formControlName="email" class="form-control" id="exampleInputEmail1"   aria-describedby="emailHelp" name="email" required>
+        <div class="form-text text-danger" *ngIf="email?.invalid && email?.touched || ngRegisterForm.submitted && email?.invalid" >
+          <div *ngIf="email?.errors?.['required']"> email is required</div>
+          <div *ngIf="email?.errors?.['pattern']"> email is invalid</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input  type="text" formControlName="username" class="form-control" id="username"   aria-describedby="usernameHelp" name="username" required>
+        <div class="form-text text-danger" *ngIf="username?.invalid && username?.touched || ngRegisterForm.submitted && username?.invalid">
+          <div *ngIf="username?.errors?.['required']"> username is required</div>
+          <div  *ngIf="username?.errors?.['pattern']"> username is invalid</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input   type="password" formControlName="password" class="form-control" id="exampleInputPassword1" name="password" required>
+        <div class="form-text text-danger" *ngIf="password?.invalid && password?.touched || ngRegisterForm.submitted && password?.invalid">
+          <div *ngIf="password?.errors?.['required']"> password is required</div>
+          <div  *ngIf="password?.errors?.['pattern']"> password is invalid</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="passwordConfirm" class="form-label">Password</label>
+        <input   type="password" formControlName="passwordConfirm" class="form-control" id="passwordConfirm" name="passwordConfirm" required>
+        <div class="form-text text-danger" *ngIf="confirmPassword?.invalid && confirmPassword?.touched || ngRegisterForm.submitted && confirmPassword?.invalid">
+          <div *ngIf="confirmPassword?.errors?.['required']"> confirm password is required</div>
+        </div>
+      </div>
+<
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+  <div class="mx-auto my-5 text-center">
+    Already have account! <a routerLink="/login">Login</a>
+  </div>
+</div>

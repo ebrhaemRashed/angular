@@ -1,0 +1,26 @@
+<div class="w-75 mx-auto">
+<div class="card w-50 mx-auto mt-5">
+  <form #loginForm="ngForm"  (ngSubmit)="checkLogin()" class="p-4">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input #emailInput="ngModel" [(ngModel)]="login.emailUser" type="text" class="form-control" id="exampleInputEmail1"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" aria-describedby="emailHelp" name="email" required>
+      <div class="form-text text-danger" *ngIf="emailInput.invalid && emailInput.touched || loginForm.submitted && emailInput.invalid">
+        <div *ngIf="emailInput.errors?.['required']"> email is required</div>
+        <div *ngIf="emailInput.errors?.['pattern']"> email is invalid</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input #passwordInput="ngModel" [(ngModel)]="login.password" type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+      <div class="form-text text-danger" *ngIf="passwordInput.invalid && passwordInput.touched || loginForm.submitted && passwordInput.invalid">
+        <div *ngIf="passwordInput.errors?.['required']"> password is required</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>
+<div class="mx-auto mt-5 text-center">
+  Don't have acount? <a routerLink="/register">register</a>
+</div>
+</div>

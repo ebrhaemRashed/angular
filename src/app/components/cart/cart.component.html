@@ -1,0 +1,36 @@
+
+<div class="w-75 mx-auto mt-5">
+  <table *ngIf="cartItems.length > 0" class="table">
+    <thead>
+    <tr>
+      <th scope="col">image</th>
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">quantity</th>
+      <th scope="col">actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let item of cartItems; let i = index;">
+      <tr>
+        <th scope="row"><img [src]="item.image" width="50px"></th>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td><button class="btn btn-primary" (click)="decreaseQuantity(i)">-</button>
+          {{item.quantity}}
+          <button class="btn btn-info" (click)="increaseQuantity(i)">+</button> </td>
+        <td>
+          <button class="btn btn-danger" (click)="removeItem(i)">remove</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+    <tfoot>
+        <td colspan="3" class="h3">total: {{totalPrice}} </td>
+    </tfoot>
+  </table>
+
+  <div *ngIf="cartItems.length == 0">
+    Cart is empty
+  </div>
+</div>
